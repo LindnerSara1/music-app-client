@@ -63,7 +63,6 @@ export const ParentCopmonent: React.FC<{}> = () => {
   const initSongs = async () => {
     try {
       const res = (await getAllSongs()) as SongModel[];
-      console.log(res);
       setSongsList(res);
       return res;
     } catch (error: any) {

@@ -1,4 +1,4 @@
-import { TableRow, TableCell, IconButton } from "@mui/material";
+import { TableCell, IconButton } from "@mui/material";
 import { SongModel } from "../../interfaces/SongModel";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
@@ -16,30 +16,25 @@ export const Song: React.FC<{
   };
   return (
     <>
-      <TableRow
-        key={props.song.price + props.i}
-        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-      >
-        <TableCell align="center">{props.song.title}</TableCell>
-        <TableCell align="center">{props.song.artist}</TableCell>
-        <TableCell align="center">{props.song.price} $</TableCell>
-        <TableCell align="center">
-          <IconButton
-            aria-label="edit"
-            onClick={() => navigate(`/Songs/edit/${props.song.id}`)}
-          >
-            <BorderColorIcon />
-          </IconButton>
-        </TableCell>
-        <TableCell align="center">
-          <IconButton
-            aria-label="delete"
-            onClick={() => deleteSong(props.song.id as string)}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </TableCell>
-      </TableRow>
+      <TableCell align="center">{props.song.title}</TableCell>
+      <TableCell align="center">{props.song.artist}</TableCell>
+      <TableCell align="center">{props.song.price} $</TableCell>
+      <TableCell align="center">
+        <IconButton
+          aria-label="edit"
+          onClick={() => navigate(`/Songs/edit/${props.song.id}`)}
+        >
+          <BorderColorIcon />
+        </IconButton>
+      </TableCell>
+      <TableCell align="center">
+        <IconButton
+          aria-label="delete"
+          onClick={() => deleteSong(props.song.id as string)}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </TableCell>
     </>
   );
 };

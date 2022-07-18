@@ -34,7 +34,7 @@ export const updateSong = async (
   try {
     const { data, status } = await axios.put<SongModel[]>(
       `${localhost}/update`,
-       song ,
+      song,
       {
         headers: {
           Accept: "application/json",
@@ -74,7 +74,9 @@ export const getAllSongs = async (): Promise<SongModel[] | string> => {
     }
   }
 };
-export const getAllSongsOfSpecificArtist = async ( artist: string ): Promise<SongModel[] | string> => {
+export const getAllSongsOfSpecificArtist = async (
+  artist: string
+): Promise<SongModel[] | string> => {
   try {
     const { data, status } = await axios.get<SongModel[]>(
       `${localhost}/artist/${artist}`,
