@@ -1,1 +1,6 @@
-export let Genre: "ROCK"| "POP"| "RAP"| "CLASSICAL";
+export type Gnere = {
+  ROCK: string;
+  POP: string;
+  RAP: string;
+  CLASSICAL: string;
+};

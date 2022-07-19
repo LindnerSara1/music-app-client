@@ -1,18 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
-import { IconButton } from "@mui/material";
-export const BackButton = () => {
+
+export const BackButton: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <>
-      <IconButton
-        onClick={() => {
-          navigate("/Songs");
-        }}
-      >
-        <ArrowCircleLeftIcon />
-      </IconButton>
-    </>
+    <ArrowCircleLeftIcon
+      onClick={() => {
+        navigate(-1);
+      }}
+    />
   );
 };

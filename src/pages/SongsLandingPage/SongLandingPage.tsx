@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Table, TextField } from "@mui/material";
 import { TableHead, TableRow, TableBody, TableContainer } from "@mui/material/";
 import Paper from "@mui/material/Paper";
 import { StyledTableCell } from "./SongLandingPage.style";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { SongModel } from "../../interfaces/SongModel";
-import { Song } from "../../components/song/Song";
+import { Song } from "./song/Song";
 import { useState } from "react";
 
 const SongLandingPage: React.FC<{
@@ -17,7 +17,9 @@ const SongLandingPage: React.FC<{
   const deleteSongProp = (id: string) => {
     props.deleteSong(id);
   };
+  const navigate = useNavigate();
   const [artist, setArtist] = useState("");
+  const arrSongModel = ["title", "artist", "genre", "length", "price"];
   return (
     <>
       <h1>The Songs Shop</h1>
@@ -41,18 +43,17 @@ const SongLandingPage: React.FC<{
         <Table sx={{ minWidth: 1000 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <StyledTableCell align="center">title</StyledTableCell>
-              <StyledTableCell align="center">artist</StyledTableCell>
-              <StyledTableCell align="center">price</StyledTableCell>
-              <StyledTableCell align="center">EDIT</StyledTableCell>
-              <StyledTableCell align="center">DELETE</StyledTableCell>
+              {arrSongModel.map((song, i) => (
+                <StyledTableCell key={i} align="center">
+                  {song}
+                </StyledTableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
             {props.songsList.map((song, i) => (
               <TableRow
                 key={i}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <Song song={song} i={i} deleteSongProp={deleteSongProp} />
               </TableRow>
@@ -60,9 +61,11 @@ const SongLandingPage: React.FC<{
           </TableBody>
         </Table>
       </TableContainer>
-      <Link to="/Songs/new">
-        <AddCircleIcon />
-      </Link>
+      <AddCircleIcon
+        onClick={() => {
+          navigate("/Songs/new");
+        }}
+      />
     </>
   );
 };

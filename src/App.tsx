@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import { ParentCopmonent } from "./pages/parentComponent/ParentComponent";
 
+
 function App() {
   return (
     <>

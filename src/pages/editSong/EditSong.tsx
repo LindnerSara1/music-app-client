@@ -12,6 +12,7 @@ import * as Yup from "yup";
 export const EditSong: React.FC<{
   idSongToEdit: Function;
   songToEdit: Function;
+  navigateTo: string;
 }> = (props) => {
   const [song, setSong] = useState<SongModel>({
     title: "",
@@ -69,25 +70,21 @@ export const EditSong: React.FC<{
           <TextField
             id="title"
             label="title"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            type="text"
             value={formik.values.title}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.title && Boolean(formik.errors.title)}
+            helperText={formik.touched.title && formik.errors.title}
           />
-          {formik.touched.title && formik.errors.title ? (
-            <div>{formik.errors.title}</div>
-          ) : null}
           <TextField
             id="artist"
             label="artist"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            type="text"
             value={formik.values.artist}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.artist && Boolean(formik.errors.artist)}
+            helperText={formik.touched.artist && formik.errors.artist}
           />
-          {formik.touched.artist && formik.errors.artist ? (
-            <div>{formik.errors.artist}</div>
-          ) : null}
           <TextField
             sx={{
               m: 1,
@@ -99,10 +96,13 @@ export const EditSong: React.FC<{
             id="genre"
             name="genre"
             label="genre"
+            type="text"
             select
             value={formik.values.genre}
             defaultValue=""
             onChange={formik.handleChange}
+            error={formik.touched.title && Boolean(formik.errors.title)}
+            helperText={formik.touched.title && formik.errors.title}
           >
             {genreTypes.map((option: string, index: number) => (
               <MenuItem key={option + index} value={option}>
@@ -110,33 +110,24 @@ export const EditSong: React.FC<{
               </MenuItem>
             ))}
           </TextField>
-          {formik.touched.genre && formik.errors.genre ? (
-            <div>{formik.errors.genre}</div>
-          ) : null}
           <TextField
             id="length"
             label="length"
             type="number"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
             value={formik.values.length}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.length && Boolean(formik.errors.length)}
+            helperText={formik.touched.length && formik.errors.length}
           />
-          {formik.touched.length && formik.errors.length ? (
-            <div>{formik.errors.length}</div>
-          ) : null}
           <TextField
             id="price"
             label="price"
             type="number"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
             value={formik.values.price}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.price && Boolean(formik.errors.price)}
+            helperText={formik.touched.price && formik.errors.price}
           />
-          {formik.touched.price && formik.errors.price ? (
-            <div>{formik.errors.price}</div>
-          ) : null}
           <Button type={"submit"} variant="contained" endIcon={<SendIcon />}>
             Send
           </Button>

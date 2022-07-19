@@ -1,5 +1,5 @@
 import { TableCell, IconButton } from "@mui/material";
-import { SongModel } from "../../interfaces/SongModel";
+import { SongModel } from "../../../interfaces/SongModel";
 import DeleteIcon from "@mui/icons-material/Delete";
 import BorderColorIcon from "@mui/icons-material/BorderColor";
 import { useNavigate } from "react-router-dom";

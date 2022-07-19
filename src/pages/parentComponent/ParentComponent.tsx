@@ -99,11 +99,11 @@ export const ParentCopmonent: React.FC<{}> = () => {
           />
         }
       ></Route>
-      <Route path="/Songs/new" element={<AddSong addSong={addSong} />}></Route>
+      <Route path="/Songs/new" element={<AddSong addSong={addSong} navigateTo={window.location.href}/>}></Route>
       <Route
         path="/Songs/edit/:id"
         element={
-          <EditSong idSongToEdit={idSongToEdit} songToEdit={songToEdit} />
+          <EditSong idSongToEdit={idSongToEdit} songToEdit={songToEdit} navigateTo={window.location.href}/>
         }
       ></Route>
     </Routes>

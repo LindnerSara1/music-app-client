@@ -8,7 +8,9 @@ import SendIcon from "@mui/icons-material/Send";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-export const AddSong: React.FC<{ addSong: Function }> = (props) => {
+export const AddSong: React.FC<{ addSong: Function; navigateTo: string }> = (
+  props
+) => {
   const addNewSong = () => {
     props.addSong(formik.values);
   };
@@ -58,26 +60,24 @@ export const AddSong: React.FC<{ addSong: Function }> = (props) => {
           <label id="h1"> ADD NEW SONG </label>
           <TextField
             id="title"
+            name="title"
             label="title"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            type="text"
             value={formik.values.title}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.title && Boolean(formik.errors.title)}
+            helperText={formik.touched.title && formik.errors.title}
           />
-          {formik.touched.title && formik.errors.title ? (
-            <div>{formik.errors.title}</div>
-          ) : null}
           <TextField
             id="artist"
+            name="artist"
             label="artist"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            type="text"
             value={formik.values.artist}
-            variant="outlined"
+            onChange={formik.handleChange}
+            error={formik.touched.artist && Boolean(formik.errors.artist)}
+            helperText={formik.touched.artist && formik.errors.artist}
           />
-          {formik.touched.artist && formik.errors.artist ? (
-            <div>{formik.errors.artist}</div>
-          ) : null}
           <TextField
             sx={{
               m: 1,
@@ -93,6 +93,8 @@ export const AddSong: React.FC<{ addSong: Function }> = (props) => {
             value={formik.values.genre}
             defaultValue=""
             onChange={formik.handleChange}
+            error={formik.touched.genre && Boolean(formik.errors.genre)}
+            helperText={formik.touched.genre && formik.errors.genre}
           >
             {genreTypes.map((option: string, index: number) => (
               <MenuItem key={option + index} value={option}>
@@ -100,35 +102,26 @@ export const AddSong: React.FC<{ addSong: Function }> = (props) => {
               </MenuItem>
             ))}
           </TextField>
-          {formik.touched.genre && formik.errors.genre ? (
-            <div>{formik.errors.genre}</div>
-          ) : null}
           <TextField
             id="length"
+            name="length"
             label="length"
             type="number"
-            aria-valuemin={0}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
             value={formik.values.length}
-            variant="outlined"
-          />
-          {formik.touched.length && formik.errors.length ? (
-            <div>{formik.errors.length}</div>
-          ) : null}
-          <TextField
-            id="price"
-            label="price"
-            type="number"
-            aria-valuemin={0}
             onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.price}
-            variant="outlined"
+            error={formik.touched.length && Boolean(formik.errors.length)}
+            helperText={formik.touched.length && formik.errors.length}
           />
-          {formik.touched.price && formik.errors.price ? (
-            <div>{formik.errors.price}</div>
-          ) : null}
+          <TextField
+              id="price"
+              name="price"
+              label="price"
+              type="number"
+              value={formik.values.price}
+              onChange={formik.handleChange}
+              error={formik.touched.price && Boolean(formik.errors.price)}
+              helperText={formik.touched.price && formik.errors.price}
+          />
           <Button type={"submit"} variant="contained" endIcon={<SendIcon />}>
             Send
           </Button>
