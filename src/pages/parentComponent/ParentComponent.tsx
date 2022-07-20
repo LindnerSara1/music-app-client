@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import {
-  addNewSong,
-  deleteSongById,
-  updateSong,
-  getAllSongsOfSpecificArtist,
-  getAllSongs,
-} from "../../api/songs.api";
+import { addNewSong } from "../../api/addNewSong";
+import { deleteSongById } from "../../api/deleteSong";
+import { getAllSongs } from "../../api/getllSongs";
+import { getAllSongsOfSpecificArtist } from "../../api/getSongByArtist";
+import { updateSong } from "../../api/updateSong";
 import { SongModel } from "../../interfaces/SongModel";
 import { AddSong } from "../addSong/AddSong";
 import { EditSong } from "../editSong/EditSong";
